@@ -2,9 +2,9 @@ package com.jjohnston.structural.composite;
 
 public class Waitress {
 
-    private MenuComponent allMenus;
+    private IMenuComponent allMenus;
 
-    public Waitress(MenuComponent allMenus) {
+    public Waitress(IMenuComponent allMenus) {
         this.allMenus = allMenus;
     }
 

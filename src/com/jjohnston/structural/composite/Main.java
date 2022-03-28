@@ -15,18 +15,18 @@ public class Main {
         allMenus.add(cafeMenu);
 
         // add menu items
-        pancakeHouseMenu.add(new MenuItem("Strawberries", "Pancakes with strawberries", true, 3.89));
-        pancakeHouseMenu.add(new MenuItem("Syrup", "Pancakes with syrup", false, 3.40));
+        pancakeHouseMenu.add(new MenuLeaf("Strawberries", "Pancakes with strawberries", true, 3.89));
+        pancakeHouseMenu.add(new MenuLeaf("Syrup", "Pancakes with syrup", false, 3.40));
 
-        dinerMenu.add(new MenuItem("Pasta", "Spaghetti with Marinara sauce and a slice of sourdough bread", true, 3.89));
-        dinerMenu.add(new MenuItem("Rice", "Chicken curry with rice", true, 3.40));
+        dinerMenu.add(new MenuLeaf("Pasta", "Spaghetti with Marinara sauce and a slice of sourdough bread", true, 3.89));
+        dinerMenu.add(new MenuLeaf("Rice", "Chicken curry with rice", true, 3.40));
 
-        cafeMenu.add(new MenuItem("Tea", "Tea with scone", true, 3.89));
-        cafeMenu.add(new MenuItem("Coffee", "Coffee with scone", false, 3.40));
+        cafeMenu.add(new MenuLeaf("Tea", "Tea with scone", true, 3.89));
+        cafeMenu.add(new MenuLeaf("Coffee", "Coffee with scone", false, 3.40));
 
         // add a menu to a menu
         dinerMenu.add(dessertMenu);
-        dessertMenu.add(new MenuItem("Cake", "A slice of cake", false, 3.40));
+        dessertMenu.add(new MenuLeaf("Cake", "A slice of cake", false, 3.40));
 
         var waitress = new Waitress(allMenus);
         waitress.printMenu();

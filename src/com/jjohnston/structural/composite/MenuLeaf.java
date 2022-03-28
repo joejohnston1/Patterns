@@ -1,14 +1,17 @@
 package com.jjohnston.structural.composite;
 
-
-public class MenuItem extends MenuComponent {
+/**
+ * The leaf does not contain any children. Another approach is to think of a leaf as a zero child composite,
+ * but it may lead to unimplemented interface methods.
+ */
+public class MenuLeaf implements IMenuComponent {
 
     private String name;
     private String description;
     private boolean vegetarian;
     private double price;
 
-    public MenuItem(String name, String description, boolean vegetarian, double price) {
+    public MenuLeaf(String name, String description, boolean vegetarian, double price) {
         this.name = name;
         this.description = description;
         this.vegetarian = vegetarian;
