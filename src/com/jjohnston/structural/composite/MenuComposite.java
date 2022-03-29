@@ -7,6 +7,10 @@ import java.util.List;
  * The Composite contains a list of leaf nodes.
  * The add and remove could be added to the interface to allow the leaf act as
  * a 'zero' leaf composite, but are segregated for a cleaner solution.
+ *
+ * The composite class represents complex components that may
+ * have children. Composite objects usually delegate the actual
+ * work to their children and then "sum up" the result.
  */
 public class MenuComposite implements IMenuComponent {
 
@@ -39,6 +43,14 @@ public class MenuComposite implements IMenuComponent {
         return description;
     }
 
+    /**
+     *  A composite executes its primary logic in a particular
+     *  way. It traverses recursively through all its children,
+     *  collecting and summing up their results. Since the
+     *  composite's children pass these calls to their own
+     *  children and so forth, the whole object tree is traversed
+     *  as a result.
+     */
     @Override
     public void print() {
         System.out.print("\n" + getName());

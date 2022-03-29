@@ -2,6 +2,13 @@ package com.jjohnston.structural.composite;
 
 public class Main {
 
+    /**
+     * The client code works with all the components via their base
+     * interface. This way the client code can support simple leaf
+     * components as well as complex composites.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         var pancakeHouseMenu = new MenuComposite("Pancake house menu", "Breakfast");
