@@ -30,20 +30,29 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
+        YouTubeDownloader naiveDownloader = new YouTubeDownloader(new ThirdPartyYouTubeClass());
+        YouTubeDownloader smartDownloader = new YouTubeDownloader(new YouTubeCacheProxy());
 
-        var youTubeService = new ThirdPartyYouTubeLibrary();
+        long naive = test(naiveDownloader);
+        long smart = test(smartDownloader);
+        System.out.print("Time saved by caching proxy: " + (naive - smart) + "ms");
 
-        var youTubeProxy = new CachedYouTubeController(youTubeService);
+    }
 
-        var manager = new YouTubeManager(youTubeProxy);
-        manager.reactOnUserInput("1");
+    private static long test(YouTubeDownloader downloader) {
+        long startTime = System.currentTimeMillis();
 
-        System.out.println("--------------------");
+        // User behavior in our app:
+        downloader.renderPopularVideos();
+        downloader.renderVideoPage("catzzzzzzzzz");
+        downloader.renderPopularVideos();
+        downloader.renderVideoPage("dancesvideoo");
+        // Users might visit the same page quite often.
+        downloader.renderVideoPage("catzzzzzzzzz");
+        downloader.renderVideoPage("someothervid");
 
-        manager.reactOnUserInput("1");
-
-        System.out.println("--------------------");
-
-        manager.reactOnUserInput("2");
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        System.out.print("Time elapsed: " + estimatedTime + "ms\n");
+        return estimatedTime;
     }
 }
